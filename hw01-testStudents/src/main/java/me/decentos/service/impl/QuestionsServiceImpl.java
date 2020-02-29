@@ -4,18 +4,15 @@ import me.decentos.domain.Questions;
 import me.decentos.service.CsvService;
 import me.decentos.service.QuestionsService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class QuestionsServiceImpl implements QuestionsService {
-    private CsvService csvService;
-    private List<String> userAnswer;
+    private final CsvService csvService;
     private int totalScore;
 
     public QuestionsServiceImpl(final CsvService csvService) {
         this.csvService = csvService;
-        userAnswer = new ArrayList<>();
     }
 
     @Override

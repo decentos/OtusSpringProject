@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 public class CsvServiceImpl implements CsvService {
-    private ResourceService resourceService;
+    private final ResourceService resourceService;
 
     public CsvServiceImpl(final ResourceService resourceService) {
         this.resourceService = resourceService;
