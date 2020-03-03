@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="resourceService"
+          class="me.decentos.service.impl.ResourceServiceImpl"/>
+
+    <bean id="csvService"
+          class="me.decentos.service.impl.CsvServiceImpl">
+        <constructor-arg name="resourceService" ref="resourceService"/>
+    </bean>
+
+    <bean id="questionsService"
+          class="me.decentos.service.impl.QuestionsServiceImpl">
+        <constructor-arg name="csvService" ref="csvService"/>
+    </bean>
+
+</beans>
