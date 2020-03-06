@@ -8,9 +8,12 @@ import java.net.URL;
 import java.util.Locale;
 
 public class ResourceServiceImpl implements ResourceService {
+    private final MessageSource messageSource;
 
     @Autowired
-    private MessageSource messageSource;
+    public ResourceServiceImpl(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
 
     @Override
     public URL getCsvURL() {

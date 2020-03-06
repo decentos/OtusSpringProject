@@ -19,8 +19,8 @@ import java.util.Locale;
 public class AppConfig {
 
     @Bean
-    ResourceService resourceService() {
-        return new ResourceServiceImpl();
+    ResourceService resourceService(MessageSource messageSource) {
+        return new ResourceServiceImpl(messageSource);
     }
 
     @Bean
