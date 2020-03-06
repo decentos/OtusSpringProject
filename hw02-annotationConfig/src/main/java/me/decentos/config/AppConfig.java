@@ -6,9 +6,13 @@ import me.decentos.service.ResourceService;
 import me.decentos.service.impl.CsvServiceImpl;
 import me.decentos.service.impl.QuestionsServiceImpl;
 import me.decentos.service.impl.ResourceServiceImpl;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+
+import java.util.Locale;
 
 @ComponentScan
 @Configuration
@@ -27,6 +31,15 @@ public class AppConfig {
     @Bean
     QuestionsService questionsService(CsvService csvService) {
         return new QuestionsServiceImpl(csvService);
+    }
+
+    @Bean
+    MessageSource messageSource() {
+        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasename("bundle");
+        messageSource.setDefaultEncoding("UTF-8");
+        messageSource.setDefaultLocale(Locale.ENGLISH);
+        return messageSource;
     }
 
 }
