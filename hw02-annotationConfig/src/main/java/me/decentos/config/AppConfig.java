@@ -29,8 +29,8 @@ public class AppConfig {
     }
 
     @Bean
-    QuestionsService questionsService(CsvService csvService) {
-        return new QuestionsServiceImpl(csvService);
+    QuestionsService questionsService(CsvService csvService, MessageSource messageSource) {
+        return new QuestionsServiceImpl(csvService, messageSource);
     }
 
     @Bean

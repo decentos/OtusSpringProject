@@ -4,6 +4,7 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import me.decentos.domain.Questions;
 import me.decentos.service.CsvService;
 import me.decentos.service.ResourceService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.util.List;
 public class CsvServiceImpl implements CsvService {
     private final ResourceService resourceService;
 
+    @Autowired
     public CsvServiceImpl(final ResourceService resourceService) {
         this.resourceService = resourceService;
     }

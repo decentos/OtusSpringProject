@@ -11,7 +11,7 @@ public class ResourceServiceImpl implements ResourceService {
     private final MessageSource messageSource;
 
     @Autowired
-    public ResourceServiceImpl(MessageSource messageSource) {
+    public ResourceServiceImpl(final MessageSource messageSource) {
         this.messageSource = messageSource;
     }
 

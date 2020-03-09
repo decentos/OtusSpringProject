@@ -3,6 +3,8 @@ package me.decentos.service.impl;
 import me.decentos.domain.Questions;
 import me.decentos.service.CsvService;
 import me.decentos.service.QuestionsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 
 import java.util.List;
 import java.util.Locale;
@@ -10,20 +12,23 @@ import java.util.Scanner;
 
 public class QuestionsServiceImpl implements QuestionsService {
     private final CsvService csvService;
+    private final MessageSource messageSource;
     private int totalScore;
-    private boolean isRuLanguage = Locale.getDefault().getLanguage().equals("ru");
-    private String name = isRuLanguage ? "Введите своё имя:" : "Enter your name:";
-    private String getReady = isRuLanguage ? ", приготовьтесь ответить на несколько вопросов!" : ", get ready to answer a few questions!";
-    private String trueAnswer = isRuLanguage ? "Это правильный ответ! Всего правильных ответов: " : "This is the correct answer! Total correct answers: ";
-    private String falseAnswer = isRuLanguage ? "Ошибка! Правильный ответ: " : "Error! Correct answer: ";
-    private String result = isRuLanguage ? ", количество правильных ответов за весь тест из 5 вопросов: " : ", number of correct answers to the all test of 5 questions: ";
 
-    public QuestionsServiceImpl(final CsvService csvService) {
+    @Autowired
+    public QuestionsServiceImpl(final CsvService csvService, final MessageSource messageSource) {
         this.csvService = csvService;
+        this.messageSource = messageSource;
     }
 
     @Override
     public void run() {
+        String name = messageSource.getMessage("user.name", null, Locale.getDefault());
+        String getReady = messageSource.getMessage("get.ready", null, Locale.getDefault());
+        String trueAnswer = messageSource.getMessage("true.answer", null, Locale.getDefault());
+        String falseAnswer = messageSource.getMessage("false.answer", null, Locale.getDefault());
+        String result = messageSource.getMessage("result", null, Locale.getDefault());
+
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println(name);
             String userName = scanner.nextLine();
