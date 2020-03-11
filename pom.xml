@@ -17,6 +17,7 @@
 
     <modules>
         <module>hw01-testStudents</module>
+        <module>hw02-annotationConfig</module>
     </modules>
 
     <properties>
