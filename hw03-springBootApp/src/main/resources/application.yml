@@ -1,3 +1,2 @@
 application:
-  locale:
-    i18n: bundle
+  i18n : bundle
