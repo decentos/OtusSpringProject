@@ -26,36 +26,28 @@ public class QuestionsServiceImpl implements QuestionsService {
     @Override
     public void run() {
         String name = messageSource.getMessage("user.name", null, Locale.getDefault());
-        String getReady = messageSource.getMessage("get.ready", null, Locale.getDefault());
         String trueAnswer = messageSource.getMessage("true.answer", null, Locale.getDefault());
         String falseAnswer = messageSource.getMessage("false.answer", null, Locale.getDefault());
-        String result = messageSource.getMessage("result", null, Locale.getDefault());
 
-        try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println(name);
-            String userName = scanner.nextLine();
-            System.out.println(userName + getReady);
-            Thread.sleep(2000);
+        Scanner scanner = new Scanner(System.in);
 
-            List<Questions> questionsList = csvService.getQuestionsList();
-            for (Questions question : questionsList) {
-                System.out.println(question.getQuestion());
-                String userAnswer = scanner.nextLine();
-                if (userAnswer.equalsIgnoreCase(question.getAnswer())) {
-                    totalScore++;
-                    System.out.println(trueAnswer + totalScore);
-                }
-                else {
-                    System.out.println(falseAnswer + question.getAnswer());
-                }
+        List<Questions> questionsList = csvService.getQuestionsList();
+        for (Questions question : questionsList) {
+            System.out.println(question.getQuestion());
+            String userAnswer = scanner.nextLine();
+            if (userAnswer.equalsIgnoreCase(question.getAnswer())) {
+                totalScore++;
+                System.out.println(trueAnswer + totalScore);
             }
-
-            System.out.println(userName + result + totalScore);
+            else {
+                System.out.println(falseAnswer + question.getAnswer());
+            }
         }
-        catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
+        scanner.close();
     }
 
+    @Override
+    public int getTotalScore() {
+        return totalScore;
+    }
 }
