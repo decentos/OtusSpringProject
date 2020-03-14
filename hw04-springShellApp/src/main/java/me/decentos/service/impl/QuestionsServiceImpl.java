@@ -25,10 +25,8 @@ public class QuestionsServiceImpl implements QuestionsService {
 
     @Override
     public void run() {
-        String name = messageSource.getMessage("user.name", null, Locale.getDefault());
         String trueAnswer = messageSource.getMessage("true.answer", null, Locale.getDefault());
         String falseAnswer = messageSource.getMessage("false.answer", null, Locale.getDefault());
-
         Scanner scanner = new Scanner(System.in);
 
         List<Questions> questionsList = csvService.getQuestionsList();
