@@ -1,2 +1,4 @@
-application:
-  i18n : bundle
+spring:
+  shell:
+    interactive:
+      enabled: false
