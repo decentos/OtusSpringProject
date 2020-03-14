@@ -41,7 +41,6 @@ public class QuestionsServiceImpl implements QuestionsService {
                 System.out.println(falseAnswer + question.getAnswer());
             }
         }
-        scanner.close();
     }
 
     @Override
