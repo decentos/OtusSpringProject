@@ -9,7 +9,7 @@ CREATE TABLE AUTHORS(
                     );
 
 CREATE TABLE GENRES(
-                    ID BIGINT PRIMARY KEY,
+                    ID BIGINT PRIMARY KEY AUTO_INCREMENT,
                     GENRE VARCHAR(255) NOT NULL UNIQUE
                    );
 
