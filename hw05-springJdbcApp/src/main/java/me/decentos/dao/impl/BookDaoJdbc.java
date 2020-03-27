@@ -28,8 +28,7 @@ public class BookDaoJdbc implements BookDao {
 
     @Override
     public void insert(Book book) {
-        jdbc.getJdbcOperations().update("insert into books (id, `title`, `author_id`, `genre_id`) values (?, ?, ?, ?)",
-                book.getId(),
+        jdbc.getJdbcOperations().update("insert into books (`title`, `author_id`, `genre_id`) values (?, ?, ?)",
                 book.getTitle(),
                 book.getAuthorId(),
                 book.getGenreId()
