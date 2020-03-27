@@ -28,8 +28,7 @@ public class GenreDaoJdbc implements GenreDao {
 
     @Override
     public void insert(Genre genre) {
-        jdbc.getJdbcOperations().update("insert into genres (id, `genre`) values (?, ?)",
-                genre.getId(),
+        jdbc.getJdbcOperations().update("insert into genres (`genre`) values (?)",
                 genre.getGenre()
         );
     }
