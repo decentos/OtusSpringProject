@@ -39,7 +39,8 @@ public class BookDaoJdbc implements BookDao {
     public Book getById(long id) {
         Map<String, Object> params = Collections.singletonMap("id", id);
         return jdbc.queryForObject(
-                "select * from books where id = :id", params, new BookMapper()
+                "select books.id, books.title, books.author_id, books.genre_id from books \n" +
+                        "where id = :id", params, new BookMapper()
         );
     }
 
