@@ -53,7 +53,7 @@ public class GenreRepositoryImpl implements GenreRepository {
     public void deleteById(long id) {
         Query query = em.createQuery("delete " +
                 "from Genre g " +
-                "where a.id = :id");
+                "where g.id = :id");
         query.setParameter("id", id);
         query.executeUpdate();
     }
