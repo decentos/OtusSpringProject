@@ -52,7 +52,7 @@ public class BookRepositoryImpl implements BookRepository {
     public void deleteById(long id) {
         Query query = em.createQuery("delete " +
                 "from Book b " +
-                "where a.id = :id");
+                "where b.id = :id");
         query.setParameter("id", id);
         query.executeUpdate();
     }
