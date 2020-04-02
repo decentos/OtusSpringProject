@@ -1,38 +1,31 @@
 package me.decentos.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "books")
 public class Book {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private final String title;
-    private final long authorId;
-    private final long genreId;
 
-    public Book(long id, String title, long authorId, long genreId) {
-        this.id = id;
-        this.title = title;
-        this.authorId = authorId;
-        this.genreId = genreId;
-    }
+    @Column(name = "title")
+    private String title;
 
-    public Book(String title, long authorId, long genreId) {
-        this.title = title;
-        this.authorId = authorId;
-        this.genreId = genreId;
-    }
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "author_id")
+    private Author author;
 
-    public long getId() {
-        return id;
-    }
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "genre_id")
+    private Genre genre;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public long getAuthorId() {
-        return authorId;
-    }
-
-    public long getGenreId() {
-        return genreId;
-    }
 }

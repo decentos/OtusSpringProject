@@ -1,24 +1,23 @@
 package me.decentos.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "genres")
 public class Genre {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private final String genre;
 
-    public Genre(long id, String genre) {
-        this.id = id;
-        this.genre = genre;
-    }
+    @Column(name = "genre")
+    private String genre;
 
-    public Genre(String genre) {
-        this.genre = genre;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
 }
