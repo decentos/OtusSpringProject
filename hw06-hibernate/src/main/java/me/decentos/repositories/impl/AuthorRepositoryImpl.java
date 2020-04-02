@@ -45,7 +45,7 @@ public class AuthorRepositoryImpl implements AuthorRepository {
     }
 
     @Override
-    public void updateNameById(long id, String firstName, String lastName) {
+    public void updateAuthorById(long id, String firstName, String lastName) {
         Query query = em.createQuery("update authors a " +
                 "set a.first_name = :firstName " +
                 "set a.last_name = :lastName " +
