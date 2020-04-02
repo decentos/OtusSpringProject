@@ -39,7 +39,7 @@ public class CommandsForGenres {
     }
 
     @ShellMethod(value = "Update genre", key = {"updateGenre"})
-    public String updateAuthorById(long id, String genreName) {
+    public String updateGenreById(long id, String genreName) {
         Genre oldGenre = genreRepository.findById(id).orElseThrow();
         String oldGenreName = oldGenre.getGenre();
 
