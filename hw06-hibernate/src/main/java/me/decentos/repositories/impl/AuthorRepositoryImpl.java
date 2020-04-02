@@ -20,11 +20,10 @@ public class AuthorRepositoryImpl implements AuthorRepository {
 
     @Override
     public Author save(Author author) {
-        if (author.getId() <=0 ) {
+        if (author.getId() <= 0) {
             em.persist(author);
             return author;
-        }
-        else {
+        } else {
             return em.merge(author);
         }
     }

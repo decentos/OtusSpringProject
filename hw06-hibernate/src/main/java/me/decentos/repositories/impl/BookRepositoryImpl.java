@@ -20,11 +20,10 @@ public class BookRepositoryImpl implements BookRepository {
 
     @Override
     public Book save(Book book) {
-        if (book.getId() <=0 ) {
+        if (book.getId() <= 0) {
             em.persist(book);
             return book;
-        }
-        else {
+        } else {
             return em.merge(book);
         }
     }
