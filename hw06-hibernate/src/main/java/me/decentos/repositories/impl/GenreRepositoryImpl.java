@@ -31,7 +31,7 @@ public class GenreRepositoryImpl implements GenreRepository {
 
     @Override
     public int count() {
-        return em.createQuery("select count(*) from genres g", Long.class).getSingleResult().intValue();
+        return em.createQuery("select count(*) from Genre g", Long.class).getSingleResult().intValue();
     }
 
     @Override
@@ -41,23 +41,18 @@ public class GenreRepositoryImpl implements GenreRepository {
 
     @Override
     public List<Genre> findAll() {
-        return em.createQuery("select g from genres", Genre.class).getResultList();
+        return em.createQuery("select g from Genre g", Genre.class).getResultList();
     }
 
     @Override
-    public void updateGenreById(long id, String genre) {
-        Query query = em.createQuery("update genres g " +
-                "set g.genre = :genre " +
-                "where g.id = :id");
-        query.setParameter("genre", genre);
-        query.setParameter("id", id);
-        query.executeUpdate();
+    public void updateGenreById(Genre genre) {
+        em.merge(genre);
     }
 
     @Override
     public void deleteById(long id) {
         Query query = em.createQuery("delete " +
-                "from genres g " +
+                "from Genre g " +
                 "where a.id = :id");
         query.setParameter("id", id);
         query.executeUpdate();

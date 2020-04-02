@@ -14,7 +14,7 @@ public interface AuthorRepository {
 
     List<Author> findAll();
 
-    void updateAuthorById(long id, String firstName, String lastName);
+    void updateAuthorById(Author author);
 
     void deleteById(long id);
 }

@@ -31,7 +31,7 @@ public class BookRepositoryImpl implements BookRepository {
 
     @Override
     public int count() {
-        return em.createQuery("select count(*) from books b", Long.class).getSingleResult().intValue();
+        return em.createQuery("select count(*) from Book b", Long.class).getSingleResult().intValue();
     }
 
     @Override
@@ -41,23 +41,18 @@ public class BookRepositoryImpl implements BookRepository {
 
     @Override
     public List<Book> findAll() {
-        return em.createQuery("select b from books", Book.class).getResultList();
+        return em.createQuery("select b from Book b", Book.class).getResultList();
     }
 
     @Override
-    public void updateBookById(long id, String title) {
-        Query query = em.createQuery("update books b " +
-                "set b.title = :title " +
-                "where b.id = :id");
-        query.setParameter("title", title);
-        query.setParameter("id", id);
-        query.executeUpdate();
+    public void updateBookById(Book book) {
+        em.merge(book);
     }
 
     @Override
     public void deleteById(long id) {
         Query query = em.createQuery("delete " +
-                "from books b " +
+                "from Book b " +
                 "where a.id = :id");
         query.setParameter("id", id);
         query.executeUpdate();

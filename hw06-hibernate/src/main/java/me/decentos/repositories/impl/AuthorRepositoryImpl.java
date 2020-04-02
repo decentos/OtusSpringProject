@@ -31,7 +31,7 @@ public class AuthorRepositoryImpl implements AuthorRepository {
 
     @Override
     public int count() {
-        return em.createQuery("select count(*) from authors a", Long.class).getSingleResult().intValue();
+        return em.createQuery("select count(*) from Author a", Long.class).getSingleResult().intValue();
     }
 
     @Override
@@ -41,25 +41,18 @@ public class AuthorRepositoryImpl implements AuthorRepository {
 
     @Override
     public List<Author> findAll() {
-        return em.createQuery("select a from authors", Author.class).getResultList();
+        return em.createQuery("select a from Author a", Author.class).getResultList();
     }
 
     @Override
-    public void updateAuthorById(long id, String firstName, String lastName) {
-        Query query = em.createQuery("update authors a " +
-                "set a.first_name = :firstName " +
-                "set a.last_name = :lastName " +
-                "where a.id = :id");
-        query.setParameter("first_name", firstName);
-        query.setParameter("last_name", lastName);
-        query.setParameter("id", id);
-        query.executeUpdate();
+    public void updateAuthorById(Author author) {
+        em.merge(author);
     }
 
     @Override
     public void deleteById(long id) {
         Query query = em.createQuery("delete " +
-                "from authors a " +
+                "from Author a " +
                 "where a.id = :id");
         query.setParameter("id", id);
         query.executeUpdate();
