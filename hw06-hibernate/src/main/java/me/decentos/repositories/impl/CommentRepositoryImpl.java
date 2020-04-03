@@ -45,7 +45,7 @@ public class CommentRepositoryImpl implements CommentRepository {
     }
 
     @Override
-    public List<Comment> findAllByBookId(int bookId) {
+    public List<Comment> findAllByBookId(long bookId) {
         return em.createQuery("select c from Comment c where c.book = :book", Comment.class)
                 .setParameter("book", new Book().byId(bookId))
                 .getResultList();

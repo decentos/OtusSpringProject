@@ -34,7 +34,7 @@ public class Book {
         this.genre = genre;
     }
 
-    public Book byId(int id) {
+    public Book byId(long id) {
         this.id = id;
         return this;
     }
