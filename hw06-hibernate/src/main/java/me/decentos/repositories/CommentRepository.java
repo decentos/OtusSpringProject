@@ -14,8 +14,6 @@ public interface CommentRepository {
 
     List<Comment> findAll();
 
-    List<Comment> findAllByBookId(long bookId);
-
     void updateCommentById(Comment comment);
 
     void deleteById(long id);

@@ -93,15 +93,6 @@ class CommentRepositoryImplTest {
         }
     }
 
-    @DisplayName("возвращать список всех комментариев для заданной книги")
-    @Test
-    void shouldReturnCorrectCommentsListByBookId() {
-        List<Comment> list = repository.findAllByBookId(2L);
-        assertThat(list.size()).isEqualTo(2);
-        assertThat(list.get(0).getCommentary()).isEqualTo("Nice");
-        assertThat(list.get(1).getCommentary()).isEqualTo("Awesome book");
-    }
-
     @DisplayName("изменять комментарий по его id")
     @Test
     void shouldUpdateCommentById() {

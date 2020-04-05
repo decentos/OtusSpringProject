@@ -33,9 +33,4 @@ public class Book {
         this.author = author;
         this.genre = genre;
     }
-
-    public Book byId(long id) {
-        this.id = id;
-        return this;
-    }
 }

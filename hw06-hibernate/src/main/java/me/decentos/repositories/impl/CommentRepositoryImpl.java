@@ -1,6 +1,5 @@
 package me.decentos.repositories.impl;
 
-import me.decentos.model.Book;
 import me.decentos.model.Comment;
 import me.decentos.repositories.CommentRepository;
 import org.springframework.stereotype.Repository;
@@ -41,13 +40,6 @@ public class CommentRepositoryImpl implements CommentRepository {
     @Override
     public List<Comment> findAll() {
         return em.createQuery("select c from Comment c", Comment.class).getResultList();
-    }
-
-    @Override
-    public List<Comment> findAllByBookId(long bookId) {
-        return em.createQuery("select c from Comment c where c.book = :book", Comment.class)
-                .setParameter("book", new Book().byId(bookId))
-                .getResultList();
     }
 
     @Override
