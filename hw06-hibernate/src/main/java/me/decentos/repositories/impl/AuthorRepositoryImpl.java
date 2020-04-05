@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,10 +49,7 @@ public class AuthorRepositoryImpl implements AuthorRepository {
 
     @Override
     public void deleteById(long id) {
-        Query query = em.createQuery("delete " +
-                "from Author a " +
-                "where a.id = :id");
-        query.setParameter("id", id);
-        query.executeUpdate();
+        Author author = findById(1L).orElseThrow();
+        em.remove(author);
     }
 }
