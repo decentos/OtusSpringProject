@@ -44,10 +44,10 @@ public class CommandsForComments {
 
     @ShellMethod(value = "Find all comments by book id", key = {"findAllCommentsByBookId"})
     public void findAllByBookId(long bookId) {
-        List<Comment> list = commentRepository.findAll();
         Book book = bookRepository.findById(bookId).orElseThrow();
+        List<Comment> list = book.getComments();
         System.out.println("Все комментраии для книги: " + book.getTitle());
-        list.stream().filter(comment -> comment.getBook().getId() == book.getId()).forEach(comment -> System.out.println(comment.getCommentary()));
+        list.forEach(comment -> System.out.println(comment.getCommentary()));
         if (list.size() == 0) System.out.println("Для данной книги еще не оставлен ни один комментарий");
     }
 

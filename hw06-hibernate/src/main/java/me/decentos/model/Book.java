@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -27,6 +29,10 @@ public class Book {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "genre_id")
     private Genre genre;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "book_id")
+    private final List<Comment> comments = new ArrayList<>();
 
     public Book(String title, Author author, Genre genre) {
         this.title = title;
