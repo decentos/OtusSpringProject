@@ -7,6 +7,7 @@ import me.decentos.repositories.BookRepository;
 import me.decentos.repositories.CommentRepository;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -42,6 +43,7 @@ public class CommandsForComments {
         list.forEach(comment -> System.out.println(String.format("Комментраий: \"%s\" для книги: %s", comment.getCommentary(), comment.getBook().getTitle())));
     }
 
+    @Transactional
     @ShellMethod(value = "Find all comments by book id", key = {"findAllCommentsByBookId"})
     public void findAllByBookId(long bookId) {
         Book book = bookRepository.findById(bookId).orElseThrow();
