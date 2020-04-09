@@ -1,20 +1,7 @@
 package me.decentos.repositories;
 
 import me.decentos.model.Author;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-import java.util.Optional;
-
-public interface AuthorRepository {
-    Author save(Author author);
-
-    int count();
-
-    Optional<Author> findById(long id);
-
-    List<Author> findAll();
-
-    void updateAuthorById(Author author);
-
-    void deleteById(long id);
+public interface AuthorRepository extends JpaRepository<Author, Long> {
 }

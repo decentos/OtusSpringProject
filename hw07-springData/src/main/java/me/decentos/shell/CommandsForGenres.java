@@ -15,7 +15,7 @@ public class CommandsForGenres {
     private final GenreRepository genreRepository;
 
     @ShellMethod(value = "Get count of genres", key = {"genresCount"})
-    public int getCount() {
+    public long getCount() {
         return genreRepository.count();
     }
 
@@ -39,11 +39,11 @@ public class CommandsForGenres {
     }
 
     @ShellMethod(value = "Update genre", key = {"updateGenre"})
-    public String updateGenreById(long id, String genreName) {
+    public String update(long id, String genreName) {
         Genre oldGenre = genreRepository.findById(id).orElseThrow();
         String oldGenreName = oldGenre.getGenre();
 
-        genreRepository.updateGenreById(new Genre(id, genreName));
+        genreRepository.save(new Genre(id, genreName));
 
         Genre updateGenre = genreRepository.findById(id).orElseThrow();
         String updateGenreName = updateGenre.getGenre();

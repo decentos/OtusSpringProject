@@ -1,20 +1,7 @@
 package me.decentos.repositories;
 
 import me.decentos.model.Comment;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-import java.util.Optional;
-
-public interface CommentRepository {
-    Comment save(Comment comment);
-
-    int count();
-
-    Optional<Comment> findById(long id);
-
-    List<Comment> findAll();
-
-    void updateCommentById(Comment comment);
-
-    void deleteById(long id);
+public interface CommentRepository extends JpaRepository<Comment, Long> {
 }

@@ -17,7 +17,7 @@ public class CommandsForBooks {
     private final BookRepository bookRepository;
 
     @ShellMethod(value = "Get count of books", key = {"booksCount"})
-    public int getCount() {
+    public long getCount() {
         return bookRepository.count();
     }
 
@@ -60,7 +60,7 @@ public class CommandsForBooks {
     }
 
     @ShellMethod(value = "Update book", key = {"updateBook"})
-    public String updateBookById(long id, String title, String firstName, String lastName, String genreName) {
+    public String update(long id, String title, String firstName, String lastName, String genreName) {
         Book oldBook = bookRepository.findById(id).orElseThrow();
         String oldTitle = oldBook.getTitle();
         String oldAuthor = oldBook.getAuthor().getFirstName() + " " + oldBook.getAuthor().getLastName();
@@ -70,7 +70,7 @@ public class CommandsForBooks {
         Genre genre = new Genre(genreName);
         Book book = new Book(id, title, author, genre);
 
-        bookRepository.updateBookById(book);
+        bookRepository.save(book);
 
         Book updateBook = bookRepository.findById(id).orElseThrow();
         String updateTitle = updateBook.getTitle();

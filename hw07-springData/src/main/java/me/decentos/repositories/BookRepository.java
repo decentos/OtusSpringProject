@@ -1,20 +1,7 @@
 package me.decentos.repositories;
 
 import me.decentos.model.Book;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-import java.util.Optional;
-
-public interface BookRepository {
-    Book save(Book book);
-
-    int count();
-
-    Optional<Book> findById(long id);
-
-    List<Book> findAll();
-
-    void updateBookById(Book book);
-
-    void deleteById(long id);
+public interface BookRepository extends JpaRepository<Book, Long> {
 }

@@ -19,7 +19,7 @@ public class CommandsForComments {
     private final BookRepository bookRepository;
 
     @ShellMethod(value = "Get count of comments", key = {"commentsCount"})
-    public int getCount() {
+    public long getCount() {
         return commentRepository.count();
     }
 
@@ -28,7 +28,7 @@ public class CommandsForComments {
         Book book = bookRepository.findById(bookId).orElseThrow();
         Comment comment = new Comment(commentary, book);
         commentRepository.save(comment);
-        return String.format("Вы добавили новый комментраий: %s для книги: %s", comment.getCommentary(), comment.getBook().getTitle());
+        return String.format("Вы добавили новый комментраий: \"%s\" для книги: %s", comment.getCommentary(), comment.getBook().getTitle());
     }
 
     @ShellMethod(value = "Find comment", key = {"findComment"})
@@ -54,12 +54,12 @@ public class CommandsForComments {
     }
 
     @ShellMethod(value = "Update comment", key = {"updateComment"})
-    public String updateCommentById(long id, String commentary, long bookId) {
+    public String update(long id, String commentary, long bookId) {
         Comment oldComment = commentRepository.findById(id).orElseThrow();
         String oldCommentary = oldComment.getCommentary();
 
         Book book = bookRepository.findById(bookId).orElseThrow();
-        commentRepository.updateCommentById(new Comment(id, commentary, book));
+        commentRepository.save(new Comment(id, commentary, book));
 
         Comment updateComment = commentRepository.findById(id).orElseThrow();
         String updateCommentary = updateComment.getCommentary();

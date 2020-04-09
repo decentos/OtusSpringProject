@@ -15,7 +15,7 @@ public class CommandsForAuthors {
     private final AuthorRepository authorRepository;
 
     @ShellMethod(value = "Get count of authors", key = {"authorsCount"})
-    public int getCount() {
+    public long getCount() {
         return authorRepository.count();
     }
 
@@ -39,12 +39,12 @@ public class CommandsForAuthors {
     }
 
     @ShellMethod(value = "Update authors", key = {"updateAuthor"})
-    public String updateAuthorById(long id, String firstName, String lastName) {
+    public String update(long id, String firstName, String lastName) {
         Author oldAuthor = authorRepository.findById(id).orElseThrow();
         String oldFirstName = oldAuthor.getFirstName();
         String oldLastName = oldAuthor.getLastName();
 
-        authorRepository.updateAuthorById(new Author(id, firstName, lastName));
+        authorRepository.save(new Author(id, firstName, lastName));
 
         Author updateAuthor = authorRepository.findById(id).orElseThrow();
         String updateFirstName = updateAuthor.getFirstName();
