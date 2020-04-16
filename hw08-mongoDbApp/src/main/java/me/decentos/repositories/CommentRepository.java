@@ -1,7 +1,11 @@
 package me.decentos.repositories;
 
 import me.decentos.model.Comment;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface CommentRepository extends JpaRepository<Comment, Long> {
+import java.util.List;
+
+public interface CommentRepository extends CrudRepository<Comment, Long> {
+
+    List<Comment> findAll();
 }
