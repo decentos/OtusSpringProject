@@ -1,18 +1,7 @@
 spring:
-  datasource:
-    initialization-mode: always
-    data: data.sql
-
-  jpa:
-    generate-ddl: false
-    hibernate:
-      ddl-auto: none
-
-    show-sql: true
-
-    properties:
-      hibernate:
-        format_sql: true
+  data:
+    mongodb:
+      database: company
 
 logging:
   level:
