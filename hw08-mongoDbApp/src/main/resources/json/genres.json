@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "5c6c5beb4c8518fde52fc3e2",
+    "genreName": "Autobiography"
+  },
+  {
+    "_id": "5c6c5beb4c8518fde52fc3e3",
+    "genreName": "Children's Literature"
+  },
+  {
+    "_id": "5c6c5beb4c8518fde52fc3e4",
+    "genreName": "Fantasy"
+  },
+  {
+    "_id": "5c6c5beb4c8518fde52fc3e5",
+    "genreName": "Literary realism"
+  },
+  {
+    "_id": "5c6c5beb4c8518fde52fc3e6",
+    "genreName": "Mathematics"
+  },
+  {
+    "_id": "5c6c5beb4c8518fde52fc3e7",
+    "genreName": "Novel"
+  },
+  {
+    "_id": "5c6c5beb4c8518fde52fc3e8",
+    "genreName": "Romance"
+  },
+  {
+    "_id": "5c6c5beb4c8518fde52fc3e9",
+    "genreName": "Satire"
+  },
+  {
+    "_id": "5c6c5beb4c8518fde52fc3ea",
+    "genreName": "Science-fiction"
+  },
+  {
+    "_id": "5c6c5beb4c8518fde52fc3eb",
+    "genreName": "Trash"
+  }
+]

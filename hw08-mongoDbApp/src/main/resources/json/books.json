@@ -1,0 +1,104 @@
+[
+  {
+    "_id": "5c6c6f0e4c8518fde52fcc5b",
+    "authors": [
+      "5c6c5beb4c8518fde52fc3d4"
+    ],
+    "comments": [
+      {
+        "_id": {
+          "$numberInt": "1"
+        },
+        "commentary": "excellent"
+      },
+      {
+        "_id": {
+          "$numberInt": "2"
+        },
+        "commentary": "awesome"
+      }
+    ],
+    "genres": [
+      "5c6c5beb4c8518fde52fc3e4",
+      "5c6c5beb4c8518fde52fc3e3"
+    ],
+    "title": "Alice in Wonderland"
+  },
+  {
+    "_id": "5c6c6f0e4c8518fde52fcc5c",
+    "authors": ["5c6c5beb4c8518fde52fc3d5"],
+    "comments": [],
+    "genres": ["5c6c5beb4c8518fde52fc3e7", "5c6c5beb4c8518fde52fc3e2"],
+    "title": "Jane Eyre"
+  },
+  {
+    "_id": "5c6c6f0e4c8518fde52fcc5d",
+    "authors": ["5c6c5beb4c8518fde52fc3d6"],
+    "comments": [],
+    "genres": ["5c6c5beb4c8518fde52fc3e7"],
+    "title": "Don Quixote"
+  },
+  {
+    "_id": "5c6c6f0e4c8518fde52fcc5e",
+    "authors": ["5c6c5beb4c8518fde52fc3d7"],
+    "comments": [],
+    "genres": ["5c6c5beb4c8518fde52fc3ea"],
+    "title": "The Time Machine"
+  },
+  {
+    "_id": "5c6c6f0e4c8518fde52fcc5f",
+    "authors": ["5c6c5beb4c8518fde52fc3d8"],
+    "comments": [],
+    "genres": ["5c6c5beb4c8518fde52fc3e5", "5c6c5beb4c8518fde52fc3e7"],
+    "title": "Anna Karenina"
+  },
+  {
+    "_id": "5c6c6f0e4c8518fde52fcc60",
+    "authors": ["5c6c5beb4c8518fde52fc3d9"],
+    "comments": [],
+    "genres": ["5c6c5beb4c8518fde52fc3e8", "5c6c5beb4c8518fde52fc3e7"],
+    "title": "Pride and Prejudice"
+  },
+  {
+    "_id": "5c6c6f0e4c8518fde52fcc61",
+    "authors": ["5c6c5beb4c8518fde52fc3d8"],
+    "comments": [],
+    "genres": ["5c6c5beb4c8518fde52fc3e2", "5c6c5beb4c8518fde52fc3e5", "5c6c5beb4c8518fde52fc3e7"],
+    "title": "Childhood"
+  },
+  {
+    "_id": "5c6c6f0e4c8518fde52fcc62",
+    "authors": ["5c6c5beb4c8518fde52fc3d8"],
+    "comments": [],
+    "genres": ["5c6c5beb4c8518fde52fc3e2", "5c6c5beb4c8518fde52fc3e5", "5c6c5beb4c8518fde52fc3e7"],
+    "title": "Boyhood"
+  },
+  {
+    "_id": "5c6c6f0e4c8518fde52fcc63",
+    "authors": ["5c6c5beb4c8518fde52fc3d6"],
+    "comments": [],
+    "genres": ["5c6c5beb4c8518fde52fc3e7"],
+    "title": "Love in the Time of Cholera"
+  },
+  {
+    "_id": "5c6c6f0e4c8518fde52fcc64",
+    "authors": ["5c6c5beb4c8518fde52fc3db"],
+    "comments": [],
+    "genres": ["5c6c5beb4c8518fde52fc3e6"],
+    "title": "The Book of Calculation"
+  },
+  {
+    "_id": "5c6c6f0e4c8518fde52fcc65",
+    "authors": ["5c6c5beb4c8518fde52fc3dd", "5c6c5beb4c8518fde52fc3dd"],
+    "comments": [],
+    "genres": ["5c6c5beb4c8518fde52fc3e9", "5c6c5beb4c8518fde52fc3e7"],
+    "title": "The Twelve Chairs"
+  },
+  {
+    "_id": "5c6c6f0e4c8518fde52fcc66",
+    "authors": ["5c6c5beb4c8518fde52fc3dd", "5c6c5beb4c8518fde52fc3dd"],
+    "comments": [],
+    "genres": ["5c6c5beb4c8518fde52fc3e9", "5c6c5beb4c8518fde52fc3e7"],
+    "title": "The Little Golden Calf"
+  }
+]

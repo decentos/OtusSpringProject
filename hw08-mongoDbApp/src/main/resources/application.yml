@@ -1,8 +1,7 @@
 spring:
   data:
     mongodb:
-      database: company
-
-logging:
-  level:
-    ROOT: ERROR
+      uri: mongodb://localhost:27017/library
+app:
+  config:
+    dbType: mongo-docker
