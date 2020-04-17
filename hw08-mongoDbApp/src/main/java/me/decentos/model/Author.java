@@ -1,5 +1,6 @@
 package me.decentos.model;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class Author {
 
     @Id
-    private long id;
+    @SerializedName("_id")
+    private String id;
 
     @Field(name = "first_name")
     private String firstName;

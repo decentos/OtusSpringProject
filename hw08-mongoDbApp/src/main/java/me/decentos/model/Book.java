@@ -1,5 +1,6 @@
 package me.decentos.model;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,8 @@ import java.util.List;
 public class Book {
 
     @Id
-    private long id;
+    @SerializedName("_id")
+    private String id;
 
     @Field(name = "title")
     private String title;
