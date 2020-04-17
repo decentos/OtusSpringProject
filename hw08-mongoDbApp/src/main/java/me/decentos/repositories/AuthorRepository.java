@@ -1,11 +1,11 @@
 package me.decentos.repositories;
 
 import me.decentos.model.Author;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
-public interface AuthorRepository extends CrudRepository<Author, Long> {
+public interface AuthorRepository extends MongoRepository<Author, String> {
 
-    List<Author> findAll();
+    List<Author> findAuthorByFirstNameContainingIgnoreCase(String firstName);
 }
