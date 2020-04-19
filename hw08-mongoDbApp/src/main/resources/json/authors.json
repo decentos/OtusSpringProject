@@ -1,0 +1,57 @@
+[
+  {
+    "_id": "5c6c5beb4c8518fde52fc3d4",
+    "firstName": "Lewis",
+    "lastName": "Carrol"
+  },
+  {
+    "_id": "5c6c5beb4c8518fde52fc3d5",
+    "firstName": "Charlotte",
+    "lastName": "Bronte"
+  },
+  {
+    "_id": "5c6c5beb4c8518fde52fc3d6",
+    "firstName": "Miguel",
+    "lastName": "de Cervantes"
+  },
+  {
+    "_id": "5c6c5beb4c8518fde52fc3d7",
+    "firstName": "Herbert",
+    "lastName": "Wells"
+  },
+  {
+    "_id": "5c6c5beb4c8518fde52fc3d8",
+    "firstName": "Leo",
+    "lastName": "Tolstoy"
+  },
+  {
+    "_id": "5c6c5beb4c8518fde52fc3d9",
+    "firstName": "Jane",
+    "lastName": "Austen"
+  },
+  {
+    "_id": "5c6c5beb4c8518fde52fc3da",
+    "firstName": "Gabriel",
+    "lastName": "García Márquez"
+  },
+  {
+    "_id": "5c6c5beb4c8518fde52fc3db",
+    "firstName": "Leonardo",
+    "lastName": "Fibonacci"
+  },
+  {
+    "_id": "5c6c5beb4c8518fde52fc3dc",
+    "firstName": "Ilya",
+    "lastName": "Ilf"
+  },
+  {
+    "_id": "5c6c5beb4c8518fde52fc3dd",
+    "firstName": "Yevgeni",
+    "lastName": "Petrov"
+  },
+  {
+    "_id": "5c6c5beb4c8518fde52fc3de",
+    "firstName": "Charles",
+    "lastName": "Dickens"
+  }
+]
