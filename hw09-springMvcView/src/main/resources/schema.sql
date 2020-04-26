@@ -11,7 +11,7 @@ create TABLE AUTHORS(
 
 create TABLE GENRES(
                     ID BIGINT PRIMARY KEY AUTO_INCREMENT,
-                    GENRE VARCHAR(255) NOT NULL UNIQUE
+                    GENRE VARCHAR(255) NOT NULL
                    );
 
 create TABLE BOOKS(
