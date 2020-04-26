@@ -6,10 +6,7 @@ import me.decentos.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,6 +38,12 @@ public class BookController {
     public String updateBook(@ModelAttribute("bookDto") BookDto bookDto) {
         Book book = BookDto.toEntity(bookDto);
         repository.save(book);
+        return "redirect:/";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") long id) {
+        repository.deleteById(id);
         return "redirect:/";
     }
 

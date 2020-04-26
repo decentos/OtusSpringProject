@@ -35,6 +35,9 @@
         <td>
             <a th:href="@{/edit(id=${book.id})}" href="edit.html">Edit</a>
         </td>
+        <td>
+            <a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a>
+        </td>
     </tr>
     </tbody>
 </table>
