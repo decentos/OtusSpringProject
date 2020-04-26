@@ -1,7 +1,9 @@
 package me.decentos.controller;
 
 import me.decentos.dto.BookDto;
+import me.decentos.model.Author;
 import me.decentos.model.Book;
+import me.decentos.model.Genre;
 import me.decentos.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,8 +36,22 @@ public class BookController {
         return "edit";
     }
 
+    @RequestMapping("/create")
+    public String createPage(Model model) {
+        model.addAttribute("book", new Book("", new Author("", ""), new Genre("")));
+        return "create";
+    }
+
+    @PostMapping("/create")
+    public String create(@ModelAttribute("bookDto") BookDto bookDto, Model model) {
+        Book book = BookDto.toEntity(bookDto);
+        repository.save(book);
+        model.addAttribute("books", repository.findAll());
+        return "redirect:/";
+    }
+
     @PostMapping("/edit")
-    public String updateBook(@ModelAttribute("bookDto") BookDto bookDto) {
+    public String update(@ModelAttribute("bookDto") BookDto bookDto) {
         Book book = BookDto.toEntity(bookDto);
         repository.save(book);
         return "redirect:/";
