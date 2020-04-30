@@ -22,4 +22,8 @@ public class BookDto {
         Genre genre = new Genre(dto.getGenre());
         return new Book(dto.getId(), dto.getTitle(), author, genre);
     }
+
+    public static BookDto toDto(Book book) {
+        return new BookDto(book.getId(), book.getTitle(), book.getAuthor().getFirstName(), book.getAuthor().getLastName(), book.getGenre().getGenre());
+    }
 }
