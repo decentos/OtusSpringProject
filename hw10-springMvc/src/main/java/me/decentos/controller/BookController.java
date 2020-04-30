@@ -3,7 +3,9 @@ package me.decentos.controller;
 import me.decentos.dto.BookDto;
 import me.decentos.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -40,10 +42,9 @@ public class BookController {
 //        return "redirect:/";
 //    }
 //
-//    @GetMapping("/api/delete/{id}")
-//    public String delete(@PathVariable("id") long id) {
-//        repository.deleteById(id);
-//        return "redirect:/";
-//    }
+    @DeleteMapping("/api/delete/{id}")
+    public void delete(@PathVariable("id") long id) {
+        repository.deleteById(id);
+    }
 
 }

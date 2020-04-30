@@ -13,6 +13,7 @@
             border: 1px solid lightgray;
             padding: 5px;
         }
+
     </style>
     <script src="webjars/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -26,6 +27,8 @@
         <th>Title</th>
         <th>Author</th>
         <th>Genre</th>
+        <th>Edit</th>
+        <th>Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -41,11 +44,31 @@
                         <td>${book.title}</td>
                         <td>${book.firstName} ${book.lastName}</td>
                         <td>${book.genre}</td>
+                        <td>
+                            <a href="edit?id=${book.id}">Edit</a>
+                        </td>
+                        <td>
+                            <button onclick = "deleteBook(${book.id})">Delete</button>
+                        </td>
                     </tr>
                 `)
             });
         })
     });
+
+    function deleteBook(id){
+        $.ajax({
+            type : "DELETE",
+            url : "/api/delete/" + id,
+            success: function () {
+                   alert('Book has been deleted');
+                   location.reload();
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
 </script>
 </body>
 </html>
