@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="keywords" th:content="${keywords}"/>
     <title>Edit book</title>
     <style type="text/css">
         body {
@@ -21,41 +22,88 @@
             margin-top: 10px;
         }
     </style>
+    <script src="webjars/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-
-<form id="edit-form" th:action="@{/edit(id=${book.id})}" th:method="post" action="edit.html">
+<div id="msg"></div>
+<form id="edit-form" action="/">
     <h1>Book Info:</h1>
 
     <div class="row">
-        <label for="id-input">ID:</label>
-        <input id="id-input" type="text" readonly="readonly" th:value="${book.id}" value="1"/>
+        <label for="id">ID:</label>
+        <input id="id" type="text" readonly="readonly" value=""/>
     </div>
 
     <div class="row">
-        <label for="title-input">Title:</label>
-        <input id="title-input" name="title" type="text" th:value="${book.title}" value="Title"/>
+        <label for="title">Title:</label>
+        <input id="title" name="title" type="text" value=""/>
     </div>
 
     <div class="row">
-        <label for="firstName-input">Author name:</label>
-        <input id="firstName-input" name="firstName" type="text" th:value="${book.author.firstName}" value="FirstName"/>
+        <label for="firstName">Author name:</label>
+        <input id="firstName" name="firstName" type="text" value=""/>
     </div>
 
     <div class="row">
-        <label for="lastName-input">Last name:</label>
-        <input id="lastName-input" name="lastName" type="text" th:value="${book.author.lastName}" value="LastName"/>
+        <label for="lastName">Last name:</label>
+        <input id="lastName" name="lastName" type="text" value=""/>
     </div>
 
     <div class="row">
-        <label for="genre-input">Genre:</label>
-        <input id="genre-input" name="genre" type="text" th:value="${book.genre.genre}" value="Genre"/>
+        <label for="genre">Genre:</label>
+        <input id="genre" name="genre" type="text" value=""/>
     </div>
 
-    <div class="row">
-        <button type="submit">Save</button>
-    </div>
+    <p>
+        <input type="submit" id="edit" value="Submit">
+    </p>
 </form>
 
+<script>
+    $(function () {
+
+        $(document).delegate('#edit', 'click', function(event) {
+			event.preventDefault();
+
+			var id = $('#id').val();
+			var title = $('#title').val();
+			var firstName = $('#firstName').val();
+			var lastName = $('#lastName').val();
+			var genre = $('#genre').val();
+
+			$.ajax({
+				type: "POST",
+				contentType: "application/json; charset=utf-8",
+				url: "http://localhost:8080/api/edit",
+				data: JSON.stringify({'id': id, 'title': title, 'firstName': firstName, 'lastName': lastName, 'genre': genre}),
+				cache: false,
+				success: function(result) {
+					$("#msg").html( "<span style='color: green'>Book added successfully</span>" );
+					window.setTimeout(function(){location.href="/"},1000)
+				},
+				error: function(err) {
+					$("#msg").html( "<span style='color: red'>Name is required</span>" );
+				}
+			});
+		});
+
+        $.get('/api/book/' + getId("id")).done(function (book) {
+
+            $("#id").val(book.id);
+            $("#title").val(book.title);
+            $("#firstName").val(book.firstName);
+            $("#lastName").val(book.lastName);
+            $("#genre").val(book.genre);
+
+        });
+
+        function getId(id) {
+            var s = window.location.search;
+            s = s.match(new RegExp(id + '=([^&=]+)'));
+            return s ? s[1] : false;
+        }
+    });
+</script>
+<h3><a href="/">Back</a></h3>
 </body>
 </html>
