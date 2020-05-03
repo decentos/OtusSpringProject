@@ -3,6 +3,7 @@ package me.decentos.page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class BookPagesController {
@@ -13,15 +14,9 @@ public class BookPagesController {
         return "list";
     }
 
-//    @GetMapping("/edit")
-//    public String editPage(@RequestParam("id") long id, Model model) {
-//        model.addAttribute("book", "book by id");
-//        return "edit";
-//    }
-//
-//    @RequestMapping("/create")
-//    public String createPage(Model model) {
-//        model.addAttribute("book", new Book("", new Author("", ""), new Genre("")));
-//        return "create";
-//    }
+    @GetMapping("/edit")
+    public String editPage(@RequestParam("id") long id, Model model) {
+        model.addAttribute("keywords", "book by id");
+        return "edit";
+    }
 }

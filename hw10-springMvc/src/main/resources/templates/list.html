@@ -31,14 +31,14 @@
         <th>Delete</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody class="dataTable">
     </tbody>
 </table>
 <script>
     $(function () {
         $.get('/api/books').done(function (books) {
             books.forEach(function (book) {
-                $('tbody').append(`
+                $('.dataTable').append(`
                     <tr>
                         <td>${book.id}</td>
                         <td>${book.title}</td>
@@ -54,6 +54,36 @@
                 `)
             });
         })
+
+
+		$(document).delegate('#addNew', 'click', function(event) {
+			event.preventDefault();
+
+			var title = $('#title').val();
+			var firstName = $('#firstName').val();
+			var lastName = $('#lastName').val();
+			var genre = $('#genre').val();
+
+			$.ajax({
+				type: "POST",
+				contentType: "application/json; charset=utf-8",
+				url: "http://localhost:8080/api/edit",
+				data: JSON.stringify({'title': title, 'firstName': firstName, 'lastName': lastName, 'genre': genre}),
+				cache: false,
+				success: function(result) {
+					$("#msg").html( "<span style='color: green'>Book added successfully</span>" );
+					window.setTimeout(function(){location.reload()},1000)
+				},
+				error: function(err) {
+					$("#msg").html( "<span style='color: red'>Name is required</span>" );
+				}
+			});
+		});
+
+		$("#addbtn").click(function(e){
+			e.preventDefault();
+			$("#add").show();
+		});
     });
 
     function deleteBook(id){
@@ -70,5 +100,38 @@
         });
     }
 </script>
+
+<p><a id="addbtn" href="#">Add book</a></p>
+
+<form id="add" action="#" class="add_form modal" style="display:none">
+
+    <h1>Book Info:</h1>
+
+    <table class="addBook" border="0">
+        <tbody>
+            <tr>
+                <td><label for="title">Title:</label></td>
+                <td><input id="title" name="title" type="text" placeholder="Title"/></td>
+            </tr>
+            <tr>
+                <td><label for="firstName">Author name:</label></td>
+                <td><input id="firstName" name="firstName" type="text" placeholder="FirstName"/></td>
+            </tr>
+            <tr>
+                <td><label for="lastName">Last name:</label></td>
+                <td><input id="lastName" name="lastName" type="text" placeholder="LastName"/></td>
+            </tr>
+            <tr>
+                <td><label for="genre">Genre:</label></td>
+                <td><input id="genre" name="genre" type="text" placeholder="Genre"/></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        <input type="submit" id="addNew" value="Submit">
+    </p>
+</form>
+
 </body>
 </html>
