@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="keywords" th:content="${keywords}"/>
+    <title>List of all books</title>
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+
+        .books, .books td {
+            border: 1px solid lightgray;
+            padding: 5px;
+        }
+
+    </style>
+    <script src="webjars/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>Books:</h1>
+
+<table class="books">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody class="dataTable">
+    </tbody>
+</table>
+<script>
+    $(function () {
+        $.get('/api/books').done(function (books) {
+            books.forEach(function (book) {
+                $('.dataTable').append(`
+                    <tr>
+                        <td>${book.id}</td>
+                        <td>${book.title}</td>
+                        <td>${book.firstName} ${book.lastName}</td>
+                        <td>${book.genre}</td>
+                        <td>
+                            <a href="edit?id=${book.id}">Edit</a>
+                        </td>
+                        <td>
+                            <button onclick = "deleteBook(${book.id})">Delete</button>
+                        </td>
+                    </tr>
+                `)
+            });
+        })
+
+
+		$(document).delegate('#addNew', 'click', function(event) {
+			event.preventDefault();
+
+			var title = $('#title').val();
+			var firstName = $('#firstName').val();
+			var lastName = $('#lastName').val();
+			var genre = $('#genre').val();
+
+			$.ajax({
+				type: "POST",
+				contentType: "application/json; charset=utf-8",
+				url: "http://localhost:8080/api/edit",
+				data: JSON.stringify({'title': title, 'firstName': firstName, 'lastName': lastName, 'genre': genre}),
+				cache: false,
+				success: function(result) {
+					$("#msg").html( "<span style='color: green'>Book added successfully</span>" );
+					window.setTimeout(function(){location.reload()},1000)
+				},
+				error: function(err) {
+					$("#msg").html( "<span style='color: red'>Name is required</span>" );
+				}
+			});
+		});
+
+		$("#addbtn").click(function(e){
+			e.preventDefault();
+			$("#add").show();
+		});
+    });
+
+    function deleteBook(id){
+        $.ajax({
+            type : "DELETE",
+            url : "/api/delete/" + id,
+            success: function () {
+                   alert('Book has been deleted');
+                   location.reload();
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+</script>
+
+<p><a id="addbtn" href="#">Add book</a></p>
+
+<form id="add" action="#" class="add_form modal" style="display:none">
+
+    <h1>Book Info:</h1>
+
+    <table class="addBook" border="0">
+        <tbody>
+            <tr>
+                <td><label for="title">Title:</label></td>
+                <td><input id="title" name="title" type="text" placeholder="Title"/></td>
+            </tr>
+            <tr>
+                <td><label for="firstName">Author name:</label></td>
+                <td><input id="firstName" name="firstName" type="text" placeholder="FirstName"/></td>
+            </tr>
+            <tr>
+                <td><label for="lastName">Last name:</label></td>
+                <td><input id="lastName" name="lastName" type="text" placeholder="LastName"/></td>
+            </tr>
+            <tr>
+                <td><label for="genre">Genre:</label></td>
+                <td><input id="genre" name="genre" type="text" placeholder="Genre"/></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        <input type="submit" id="addNew" value="Submit">
+    </p>
+</form>
+
+</body>
+</html>
