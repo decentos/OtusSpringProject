@@ -1,4 +1,4 @@
-package me.decentos.security.auth;
+package me.decentos.auth;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

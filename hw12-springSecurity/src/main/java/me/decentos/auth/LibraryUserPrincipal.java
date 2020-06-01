@@ -1,4 +1,4 @@
-package me.decentos.security.auth;
+package me.decentos.auth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

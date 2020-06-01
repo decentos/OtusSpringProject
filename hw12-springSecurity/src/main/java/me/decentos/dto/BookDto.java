@@ -1,25 +1,49 @@
 package me.decentos.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import me.decentos.model.Author;
-import me.decentos.model.Book;
-import me.decentos.model.Genre;
+import me.decentos.domain.Author;
+import me.decentos.domain.Book;
+import me.decentos.domain.Genre;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class BookDto {
-    private long id;
+
+    @NotBlank
     private String title;
+
+    @NotBlank
     private String firstName;
+
+    @NotBlank
     private String lastName;
+
+    @NotBlank
     private String genre;
 
-    public static Book toEntity(BookDto dto) {
-        Author author = new Author(dto.getFirstName(), dto.getLastName());
-        Genre genre = new Genre(dto.getGenre());
-        return new Book(dto.getId(), dto.getTitle(), author, genre);
+    @NotBlank
+    @Pattern(
+            regexp = "\\d{4}",
+            message = "Invalid year format. Must be 4 digits"
+    )
+    private String year;
+
+    public Book toEntity(final BookDto bookDto) {
+        final Author author = new Author();
+        author.setFirstName(bookDto.getFirstName());
+        author.setLastName(bookDto.getLastName());
+
+        final Genre genre = new Genre();
+        genre.setGenreName(bookDto.getGenre());
+
+        final Book book = new Book();
+        book.setTitle(bookDto.getTitle());
+        book.setYear(bookDto.getYear());
+        book.addAuthor(author);
+        book.addGenre(genre);
+        return book;
     }
+
 }

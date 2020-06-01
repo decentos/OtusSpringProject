@@ -1,7 +1,7 @@
-package me.decentos.security;
+package me.decentos;
 
 import lombok.RequiredArgsConstructor;
-import me.decentos.security.auth.LibraryUserDetailsService;
+import me.decentos.auth.LibraryUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -19,7 +19,7 @@ import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
+public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
     private final static String[] unrestricted = new String[]{"/", "/home"};
     private static final int ENCRYPTION_STRENGTH = 11;
@@ -60,7 +60,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter implemen
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http
+                .authorizeRequests()
                 .mvcMatchers(HttpMethod.GET, unrestricted).permitAll()
                 .mvcMatchers(HttpMethod.GET, "/library/books/add", "/library/books/search/**").hasRole("USER")
                 .mvcMatchers(HttpMethod.POST, "/library/books/add").hasRole("ADMIN")
