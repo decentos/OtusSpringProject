@@ -32,3 +32,10 @@ insert into COMMENTS(COMMENTARY, BOOK_ID) values ('Awesome book', 2);
 insert into COMMENTS(COMMENTARY, BOOK_ID) values ('Pretty good', 3);
 insert into COMMENTS(COMMENTARY, BOOK_ID) values ('Very good', 5);
 insert into COMMENTS(COMMENTARY, BOOK_ID) values ('Bad book', 9);
+
+INSERT INTO users (username, password, is_acc_non_exp, is_acc_non_locked, is_cred_non_exp, is_enabled) VALUES ('admin', '$2a$11$dp4wMyuqYE3KSwIyQmWZFeUb7jCsHAdk7ZhFc0qGw6i5J124imQBi', TRUE, TRUE, TRUE, TRUE);
+INSERT INTO users (username, password, is_acc_non_exp, is_acc_non_locked, is_cred_non_exp, is_enabled) VALUES ('jdoe', '$2a$11$3NO32OV1TGjap3xMpAEjmuiizitWuaSwUYz42aMtlxRliwJ8zm4Sm', TRUE, TRUE, TRUE, TRUE);
+
+INSERT INTO auth_user_group (username, auth_group) VALUES ('admin', 'USER');
+INSERT INTO auth_user_group (username, auth_group) VALUES ('admin', 'ADMIN');
+INSERT INTO auth_user_group (username, auth_group) VALUES ('jdoe', 'USER');
