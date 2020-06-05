@@ -34,3 +34,5 @@ insert into COMMENTS(COMMENTARY, BOOK_ID) values ('Very good', 5);
 insert into COMMENTS(COMMENTARY, BOOK_ID) values ('Bad book', 9);
 
 insert into USERS(NAME, PASSWORD) values ('admin', '$2a$10$c/xskKsGdCBB055VoDGpduiu5DtIaSVxGuohLnjxfVLjOc9Bti0KO');
+insert into USERS(NAME, PASSWORD) values ('user1', '$2a$10$c/xskKsGdCBB055VoDGpduiu5DtIaSVxGuohLnjxfVLjOc9Bti0KO');
+insert into USERS(NAME, PASSWORD) values ('user2', '$2a$10$c/xskKsGdCBB055VoDGpduiu5DtIaSVxGuohLnjxfVLjOc9Bti0KO');

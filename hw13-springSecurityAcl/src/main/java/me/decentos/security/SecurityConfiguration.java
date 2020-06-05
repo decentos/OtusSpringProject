@@ -1,8 +1,9 @@
 package me.decentos.security;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -14,9 +15,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Collections;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
     final private UserDetailsService userService;
 
     @Override
@@ -27,7 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests().antMatchers("/", "/edit", "/create",  "/delete/*").authenticated()
+                .authorizeRequests().antMatchers("/", "/edit", "/create", "/delete/*").hasAnyRole("USER", "ADMIN")
                 .and()
                 .formLogin()
                 .and().anonymous()
