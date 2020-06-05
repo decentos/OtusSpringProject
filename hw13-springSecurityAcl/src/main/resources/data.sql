@@ -32,3 +32,5 @@ insert into COMMENTS(COMMENTARY, BOOK_ID) values ('Awesome book', 2);
 insert into COMMENTS(COMMENTARY, BOOK_ID) values ('Pretty good', 3);
 insert into COMMENTS(COMMENTARY, BOOK_ID) values ('Very good', 5);
 insert into COMMENTS(COMMENTARY, BOOK_ID) values ('Bad book', 9);
+
+insert into USERS(NAME, PASSWORD) values ('admin', '$2a$10$c/xskKsGdCBB055VoDGpduiu5DtIaSVxGuohLnjxfVLjOc9Bti0KO');

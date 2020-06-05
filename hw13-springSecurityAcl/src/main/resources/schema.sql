@@ -28,4 +28,10 @@ create TABLE COMMENTS(
                       COMMENTARY VARCHAR(255),
                       BOOK_ID BIGINT,
                       FOREIGN KEY (BOOK_ID) REFERENCES BOOKS (ID) ON delete CASCADE
-                     )
+                     );
+
+create TABLE USERS(
+                     ID BIGINT PRIMARY KEY AUTO_INCREMENT,
+                     NAME VARCHAR(50) NOT NULL,
+                     PASSWORD VARCHAR(255) NOT NULL
+                    );
