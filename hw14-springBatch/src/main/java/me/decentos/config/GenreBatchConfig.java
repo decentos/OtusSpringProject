@@ -23,7 +23,7 @@ public class GenreBatchConfig {
         return new JdbcCursorItemReaderBuilder<Genre>()
                 .name("genreItemReader")
                 .dataSource(dataSource)
-                .sql("select * from genres")
+                .sql("select genres.id, genres.genre from genres")
                 .rowMapper(new GenreBatchConfig.GenreMapper())
                 .build();
     }

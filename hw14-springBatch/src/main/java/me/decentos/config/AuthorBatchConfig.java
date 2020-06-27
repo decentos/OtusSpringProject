@@ -23,7 +23,7 @@ public class AuthorBatchConfig {
         return new JdbcCursorItemReaderBuilder<Author>()
                 .name("authorItemReader")
                 .dataSource(dataSource)
-                .sql("select * from authors")
+                .sql("select authors.id, authors.first_name, authors.last_name from authors")
                 .rowMapper(new AuthorBatchConfig.AuthorMapper())
                 .build();
     }
