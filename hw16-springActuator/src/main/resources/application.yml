@@ -10,3 +10,21 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics, logfile, info
+      base-path: /monitor
+  endpoint:
+    health:
+      show-details: always
+  health:
+    defaults:
+      enabled: true
+
+logging:
+  file:
+    path: ./hw16-springActuator/logs/
+    name: ${logging.file.path}/applog.log
