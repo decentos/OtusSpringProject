@@ -19,3 +19,7 @@ spring:
   data:
     rest:
       base-path: /datarest
+
+logging:
+  file:
+    name: logfile.txt
