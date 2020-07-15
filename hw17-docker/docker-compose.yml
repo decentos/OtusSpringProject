@@ -1,0 +1,25 @@
+version: "3"
+services:
+  application:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    environment:
+      MY_SQL_ROOT_USER: root
+      MY_SQL_ROOT_PASSWORD: root
+      DB_URL: jdbc:mysql://mysqldb:3306/library
+    depends_on:
+      - db
+  db:
+    container_name: mysqldb
+    image: mysql/mysql-server:5.7.29-1.1.15
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: library
+    ports:
+      - 3308:3306
