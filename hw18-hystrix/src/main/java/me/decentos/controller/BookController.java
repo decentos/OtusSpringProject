@@ -1,37 +1,33 @@
 package me.decentos.controller;
 
+import lombok.RequiredArgsConstructor;
 import me.decentos.dto.BookDto;
 import me.decentos.model.Author;
 import me.decentos.model.Book;
 import me.decentos.model.Genre;
-import me.decentos.repositories.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import me.decentos.service.BookRepositoryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Controller
 public class BookController {
 
-    private final BookRepository repository;
-
-    @Autowired
-    public BookController(BookRepository repository) {
-        this.repository = repository;
-    }
+    private final BookRepositoryService bookRepositoryService;
 
     @GetMapping("/")
     public String listPage(Model model) {
-        List<Book> books = repository.findAll();
+        List<Book> books = bookRepositoryService.findAll();
         model.addAttribute("books", books);
         return "list";
     }
 
     @GetMapping("/edit")
     public String editPage(@RequestParam("id") long id, Model model) {
-        Book book = repository.findById(id).orElseThrow();
+        Book book = bookRepositoryService.findById(id);
         model.addAttribute("book", book);
         return "edit";
     }
@@ -45,22 +41,21 @@ public class BookController {
     @PostMapping("/create")
     public String create(@ModelAttribute("bookDto") BookDto bookDto, Model model) {
         Book book = BookDto.toEntity(bookDto);
-        repository.save(book);
-        model.addAttribute("books", repository.findAll());
+        bookRepositoryService.save(book);
+        model.addAttribute("books", bookRepositoryService.findAll());
         return "redirect:/";
     }
 
     @PostMapping("/edit")
     public String update(@ModelAttribute("bookDto") BookDto bookDto) {
         Book book = BookDto.toEntity(bookDto);
-        repository.save(book);
+        bookRepositoryService.save(book);
         return "redirect:/";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") long id) {
-        repository.deleteById(id);
+        bookRepositoryService.deleteById(id);
         return "redirect:/";
     }
-
 }

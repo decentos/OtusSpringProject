@@ -10,3 +10,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+hystrix:command.findAllBooks.execution.isolation.thread.timeoutInMilliseconds: 5000
+hystrix.command.findBookById.execution.isolation.thread.timeoutInMilliseconds: 5000
+hystrix.command.findAllCommentByBook.execution.isolation.thread.timeoutInMilliseconds: 5000
